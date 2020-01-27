@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content= "width= device-width"/>
+        <title>Hui Zhang Personal Website</title>
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/projectStyles.css">
+      
+    </head>
+    <body>
+        <script src='js/Script.js'></script>
+
+        <header class= "container">
+            <h1> <img src= "img/logo.png" alt="Hui Zhang Logo"> </h1>
+            <nav class= "menu-option">
+                <ul>
+                    <li><a href= "#">Home</a></li>
+                    <li><a href= "About.html">About</a></li>
+                    <li><a href= "Travel.html">Travel</a></li>
+                </ul>
+            </nav>
+        </header>
+    
+    <div class="slideshow-container">
+        <!-- The list of slides, as the list of captions will be defined by JavaScript  -->
+        <div class="mySlides fade">
+            <div class="numbertext"></div>
+            <img style="width:100%">
+            <div class="text"></div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>  <!-- The "<" character -->
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>   <!-- The ">" character -->
+    </div>
+    <br>
+    <div class="dots-container">
+        <!-- The span elements for the dots will be dynanmically added to DOM by JavaScript -->
+        <!-- The number of dots will depend on the number of slides -->
+    </div>
+
+    <script>
+        var slideArray = ["Background0.jpeg","Background1.jpeg", "Background2.jpeg", "Background3.jpeg"]
+        var captionArray = ["Caption One", "Caption Two", "Caption Three"]
+
+        setupDots();
+
+        var slideIndex = 1;     // slides indexed from 1
+        showSlides(slideIndex);
+
+        var timeout = null;
+        timeout=setTimeout(automaticChange, 7000);  // To avoid automatic slide change, comment this line
+
+        function setupDots() {
+            var i;
+            var dotSet = document.getElementsByClassName("dots-container")[0];          
+            for (i = 0; i < slideArray.length; i++) {
+                var dot = document.createElement('span'); // create a new element of type (tag) span
+                dot.className = "dot";                    // give it class="dot"
+                dot.index = i + 1;                        // give it an attribute index to remember its index
+                dot.onclick = function () { currentSlide(this.index) };  // give it the onclick event  
+                dotSet.appendChild(dot);                  // add it as a child to to div "dots-container"
+            }
+        }
+
+        function plusSlides(n) {
+            slideIndex += n;
+            showSlides(slideIndex);
+            /* if automaticChange is on, reset the timer */
+            if (timeout !== null) {
+                clearTimeout(timeout);
+                timeout = setTimeout(automaticChange, 7000);
+            }
+        }
+
+        function currentSlide(n) {
+            slideIndex = n
+            showSlides(slideIndex);
+            /* if automaticChange is on, reset the timer */
+            if (timeout !== null) {
+                clearTimeout(timeout);
+                timeout = setTimeout(automaticChange, 7000); 
+            }
+        }
+
+        function showSlides(n) {
+            var i;
+            var slide = document.getElementsByClassName("mySlides")[0];
+            var numbertext = document.getElementsByClassName("numbertext")[0];
+            var text = document.getElementsByClassName("text")[0];
+            var dots = document.getElementsByClassName("dot");             
+
+            if (n > slideArray.length) { slideIndex = 1 }   // if beyond the last one, go to the first one
+            if (n < 1) { slideIndex = slideArray.length }   // if before the first one, go to the last one
+
+            slide.style.display = "none";
+ 
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");               
+            }           
+            slide.getElementsByTagName("img")[0].src = slideArray[slideIndex - 1];
+            numbertext.innerHTML = slideIndex + " / " + slideArray.length;
+            text.innerHTML = captionArray[slideIndex - 1];
+            slide.style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+        function automaticChange() {
+            slideIndex++;
+            showSlides(slideIndex);
+            timeout=setTimeout(automaticChange, 7000);   // call again automaticChange() after 7s
+        }
+    </script>
+
+        <div class= "container panel1">
+             <section class= "panel video">
+                <h2>Video</h2>
+                <ol>
+                    <li>
+                        <a href= "video.html">
+                                    <figure id = "video1"> 
+                                       <video controls="controls" width="290" height="370">
+                                            <source src="img/Video1.mp4" video="web/mov" >
+                                       </video>
+                                    </figure>
+                                </li>
+                                <li>
+                                        <a href= "video.html">
+                                    <figure id = "video2"> 
+                                        <video controls="controls" width="290" height="370">
+                                            <source src="img/Video2.mp4" video="web/mov" >
+                                        </video>
+                                    </figure>                                                              
+                                </li>
+                                <li>
+                                        <a href= "video.html">
+                                     <figure id = "video3"> 
+                                        <video controls="controls" width="290" height="370">
+                                            <source src="img/Video3.mp4" video="web/mov" >
+                                        </video>
+                                 </figure>     
+
+                                </li>
+                            </ol>
+            </section>            
+
+            <section class= "panel travel">
+                <h2>Travel</h2>
+                <ol>
+                    <li>
+                        <a href= "picture.html">
+                            <figure>
+                                <img src= "img/travel1.JPG" alt= "travel picture1" />
+                                <figcaption>Niagara Falls</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                    <li>
+                        <a href= "picture.html">
+                            <figure>
+                                <img src= "img/travel2.JPG" alt= "travel picture1" />
+                                <figcaption>Thousand Islands Lake</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                    <li>
+                        <a href= "picture.html">
+                            <figure>
+                                <img src= "img/travel3.JPG" alt= "travel picture2" />
+                                <figcaption>Toronto city</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                    <li>
+                        <a href= "picture.html">
+                            <figure>
+                                <img src= "img/travel4.JPG" alt= "travel picture3" />
+                                <figcaption>Niagara Night's View</figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                    <li>
+                        <a href= "picture.html">
+                            <figure>
+                                <img src= "img/travel8.JPG" alt= "travel picture4" />
+                                <figcaption>Ottawa City</figcaption>
+                            </figure>
+                        </a>
+                    </li>          
+                    <li>
+                        <a href= "picture.html">
+                            <figure>
+                                <img src= "img/travel6.JPG" alt= "travel picture1" />
+                                <figcaption>Quebec Old City</figcaption>
+                            </figure>
+                       </a>
+                  </li>
+                </ol>
+            </section>
+
+            <section class= "panel eat">
+                    <h2>Eat</h2>
+                    <ol>
+                        <li>
+                            <a href= "picture.html">
+                                <figure>
+                                    <img src= "img/food1.JPG" alt= "food picture1" />
+                                </figure>
+                            </a>
+                        </li>
+                        <li>
+                            <a href= "picture.html">
+                                <figure>
+                                    <img src= "img/food2.JPG" alt= "food picture2" />
+                                </figure>
+                            </a>
+                        </li>
+                        <li>
+                            <a href= "picture.html">
+                                <figure>
+                                    <img src= "img/food3.JPG" alt= "food picture3" />
+                                </figure>
+                            </a>
+                        </li>
+                        <li>
+                            <a href= "picture.html">
+                                <figure>
+                                    <img src= "img/food10.JPG" alt= "food picture4" />
+                                </figure>
+                            </a>
+                        </li>
+                        <li>
+                            <a href= "picture.html">
+                                <figure>
+                                    <img src= "img/food5.JPG" alt= "food picture5" />
+                                </figure>
+                            </a>
+                        </li>
+                        <li>
+                            <a href= "picture.html">
+                                <figure>
+                                    <img src= "img/food8.JPG" alt= "food picture6" />
+                                </figure>
+                            </a>
+                        </li>
+                    </ol>
+                </section>
+            </div>
+
+           
+            <div class= "container panel2">
+                    <section class= "panel blogs">
+                            <h2>Blogs</h2>
+                            <ol>
+                                <li>
+                                    <a href= "picture.html">
+                                        <figure>
+                                            <img src= "img/blog1.JPG" alt= "blogs picture1" />
+                                        </figure>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href= "picture.html">
+                                        <figure>
+                                            <img src= "img/blog2.JPG" alt= "blogs picture2" />
+                                        </figure>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href= "picture.html">
+                                        <figure>
+                                            <img src= "img/blog4.JPG" alt= "blogs picture2" />
+                                        </figure>
+                                    </a>
+                                </li>
+                            </ol>
+                        </section>                      
+            </div>
+        <footer>
+            <div class= "cantainer">
+                <ul class= "social">
+                    <li>
+                        <a href="http://facebook.com/huizhang">Facebook</a>
+                    </li>
+                    <li>
+                        <a href="http://twitter.com/huizhang">Twitter</a>
+                    </li>
+                    <li>
+                        <a href="http://instagram.com/huizhang">Instagram</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="copy">
+                &copy; HuiZhang2019
+            </div>
+        </footer>
+        <p><a href="#top">Go To The Top of the page</a></p>
+        <script>
+            function openTab(tabName) 
+            {
+                var i, x;
+                x = document.getElementsByClassName("containerTab");
+                for (i = 0; i < x.length; i++) 
+                {
+                    x[i].style.display = "none";
+                }
+                document.getElementById(tabName).style.display = "block";
+            }
+        </script>  
+    </body>
+</html>
